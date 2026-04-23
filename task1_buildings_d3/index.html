@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Top Completed Skyscrapers</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell" id="app" tabindex="0">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">D3 interactive ranking</p>
+        <h1>Top Completed Skyscrapers</h1>
+      </div>
+      <div class="controls" aria-label="Sort buildings">
+        <button type="button" class="active" data-sort="height">Height ↓</button>
+        <button type="button" data-sort="name">Name A→Z</button>
+      </div>
+    </header>
+
+    <section class="summary" aria-label="Selected building facts">
+      <div class="summary-item">
+        <span>Selected</span>
+        <strong class="selected-name">-</strong>
+      </div>
+      <div class="summary-item">
+        <span>Height</span>
+        <strong class="selected-height">-</strong>
+      </div>
+      <div class="summary-item">
+        <span>Completed</span>
+        <strong class="selected-year">-</strong>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <section class="chart-panel" aria-label="Horizontal bar chart">
+        <div class="panel-head">
+          <h2>Height Ranking</h2>
+          <p>Click a bar to inspect the tower.</p>
+        </div>
+        <svg class="chart" role="img" aria-label="Top ten completed buildings by height"></svg>
+      </section>
+
+      <aside class="detail-panel" aria-live="polite"></aside>
+    </section>
+  </main>
+
+  <div class="tooltip" role="tooltip"></div>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="app.js"></script>
+</body>
+</html>

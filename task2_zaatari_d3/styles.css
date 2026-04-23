@@ -1,0 +1,262 @@
+:root {
+  --bg: #f3f7f1;
+  --panel: #fffdf8;
+  --ink: #1f2a2e;
+  --muted: #667477;
+  --line: #d8dfd2;
+  --green: #2f7d5c;
+  --blue: #386a91;
+  --coral: #d35d4b;
+  --yellow: #e2b846;
+  --shadow: 0 18px 34px rgba(31, 42, 46, .11);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(226, 184, 70, .22), transparent 32%),
+    linear-gradient(135deg, rgba(47, 125, 92, .10), transparent 34%),
+    var(--bg);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.masthead,
+.workspace {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.masthead {
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(320px, .7fr);
+  gap: 22px;
+  align-items: end;
+  padding: 22px 0 18px;
+}
+
+.eyebrow {
+  margin: 0 0 9px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.shelter-strip {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.shelter-row {
+  display: grid;
+  grid-template-columns: 104px 1fr 54px;
+  gap: 10px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.shelter-track {
+  height: 10px;
+  overflow: hidden;
+  background: #e6ebe2;
+}
+
+.shelter-fill {
+  height: 100%;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(620px, 1.5fr) minmax(330px, .8fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.chart-card,
+.stats-card {
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.chart-card {
+  padding: 20px 20px 14px;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.panel-head h2,
+.stats-card h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.panel-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.population-chart {
+  display: block;
+  width: 100%;
+  height: 520px;
+}
+
+.axis text {
+  fill: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.axis path,
+.axis line {
+  stroke: var(--line);
+}
+
+.axis-title {
+  fill: var(--muted);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.area {
+  fill: url(#populationGradient);
+}
+
+.line {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 2.5;
+}
+
+.brush .selection {
+  fill: var(--yellow);
+  fill-opacity: .24;
+  stroke: var(--coral);
+  stroke-width: 2;
+}
+
+.hover-line {
+  stroke: var(--blue);
+  stroke-dasharray: 4 4;
+}
+
+.hover-dot {
+  fill: var(--coral);
+  stroke: #fffdf8;
+  stroke-width: 3;
+}
+
+.stats-card {
+  padding: 20px;
+}
+
+.range-value {
+  margin: 14px 0 18px;
+  padding: 12px 14px;
+  color: var(--blue);
+  background: #eef5f3;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.stats-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.stat {
+  padding: 15px 0 13px;
+  border-top: 1px solid var(--line);
+}
+
+.stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.stat strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.tooltip {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -118%);
+  background: rgba(31, 42, 46, .94);
+  color: #fffdf8;
+  padding: 9px 11px;
+  font-size: 12px;
+  font-weight: 750;
+  box-shadow: var(--shadow);
+  z-index: 10;
+}
+
+.tooltip strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.error {
+  max-width: 1180px;
+  margin: 20px auto;
+  padding: 14px 16px;
+  background: #fff4ee;
+  color: #9a2d17;
+  border-left: 5px solid var(--coral);
+  font-weight: 850;
+}
+
+@media (max-width: 920px) {
+  .masthead,
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+}
